@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gender Studies Quiz</title>
+<style>
+:root{--bg:#f4f6fb;--card:#fff;--text:#172033;--muted:#64748b;--accent:#4f46e5;--good:#16a34a;--bad:#dc2626;--border:#e2e8f0}
+*{box-sizing:border-box}body{margin:0;font-family:Inter,system-ui,Arial,sans-serif;background:var(--bg);color:var(--text)}
+.container{max-width:900px;margin:auto;padding:24px}
+header{background:linear-gradient(135deg,#111827,#4f46e5);color:white;border-radius:20px;padding:28px;margin-bottom:20px;box-shadow:0 12px 30px #0002}
+header h1{margin:0 0 8px;font-size:30px}header p{margin:0;opacity:.88}
+.panel,.quiz-card,.result{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:22px;margin-bottom:18px;box-shadow:0 6px 18px #0000000a}
+.controls{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+label{font-size:13px;font-weight:700;color:var(--muted)}select,input,button{font:inherit}
+select,input{width:100%;padding:12px;border:1px solid var(--border);border-radius:10px;margin-top:6px;background:white}
+button{border:0;border-radius:10px;padding:12px 18px;font-weight:700;cursor:pointer}
+button:disabled{opacity:.55;cursor:not-allowed}.primary{background:var(--accent);color:#fff}.secondary{background:#eef2ff;color:#3730a3}
+.topbar{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:16px}
+.progress{height:9px;background:#e5e7eb;border-radius:99px;overflow:hidden}.progress>div{height:100%;background:var(--accent);transition:.25s}
+.meta{display:flex;justify-content:space-between;color:var(--muted);font-size:13px;margin:10px 0}
+.question{font-size:21px;font-weight:750;line-height:1.45;margin:20px 0}
+.option{display:block;width:100%;text-align:left;background:white;border:1px solid var(--border);margin:10px 0;padding:15px;border-radius:12px;transition:.15s}
+.option:hover:not(:disabled){border-color:#818cf8;background:#f8faff}.option.selected{border-color:var(--accent);background:#eef2ff}
+.option.correct{border-color:var(--good);background:#ecfdf5}.option.wrong{border-color:var(--bad);background:#fef2f2}
+.feedback{margin-top:14px;padding:14px;border-radius:12px;background:#f8fafc;color:#334155;line-height:1.5}
+.actions{display:flex;justify-content:space-between;gap:10px;margin-top:18px}
+.hidden{display:none}.score{font-size:52px;font-weight:800;color:var(--accent);text-align:center}.result{text-align:center}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:18px 0}.stat{background:#f8fafc;border-radius:12px;padding:15px}.stat b{display:block;font-size:22px}
+.small{font-size:13px;color:var(--muted)}.unit-badge{display:inline-block;padding:5px 9px;background:#eef2ff;color:#3730a3;border-radius:999px;font-size:12px;font-weight:700}
+@media(max-width:650px){.controls,.stats{grid-template-columns:1fr}.container{padding:12px}header{padding:22px}.question{font-size:18px}}
+</style>
+</head>
+<body>
+<div class="container">
+<header>
+  <h1>Gender Studies Quiz</h1>
+  <p>100 MCQs • Unit-wise • Based on QB 1</p>
+</header>
+
+<section id="setup" class="panel">
+  <div class="controls">
+    <div><label>SELECT UNIT</label><select id="unit"></select></div>
+    <div><label>NUMBER OF QUESTIONS</label>
+      <select id="count"><option>10</option><option>20</option><option>30</option><option>40</option><option>50</option><option value="100">All available</option></select>
+    </div>
+  </div>
+  <div style="margin-top:14px;display:flex;gap:10px;flex-wrap:wrap">
+    <button class="primary" onclick="startQuiz()">Start Quiz</button>
+    <button class="secondary" onclick="startQuick()">Quick 10</button>
+  </div>
+  <p class="small" style="margin-bottom:0">This version is standalone: just open <b>quiz.html</b>. No local server or JSON fetch is required.</p>
+</section>
+
+<section id="quiz" class="hidden">
+  <div class="panel">
+    <div class="topbar"><span id="unitName" class="unit-badge"></span><span id="counter"></span></div>
+    <div class="progress"><div id="progressBar"></div></div>
+  </div>
+  <div class="quiz-card">
+    <div class="meta"><span id="questionNo"></span><span id="liveScore"></span></div>
+    <div id="question" class="question"></div>
+    <div id="options"></div>
+    <div id="feedback" class="feedback hidden"></div>
+    <div class="actions">
+      <button class="secondary" id="prevBtn" onclick="previousQuestion()">Previous</button>
+      <button class="primary" id="nextBtn" onclick="nextQuestion()">Next</button>
+    </div>
+  </div>
+</section>
+
+<section id="result" class="result hidden">
+  <div class="small">QUIZ COMPLETE</div>
+  <div id="score" class="score"></div>
+  <div id="message"></div>
+  <div class="stats">
+    <div class="stat"><b id="correctStat">0</b>Correct</div>
+    <div class="stat"><b id="wrongStat">0</b>Wrong</div>
+    <div class="stat"><b id="percentStat">0%</b>Score</div>
+  </div>
+  <button class="primary" onclick="restart()">Try Again</button>
+</section>
+</div>
+
+<script id="quiz-data" type="application/json">{"title": "Gender Studies Quiz Module", "source": "QB 1.pdf", "description": "Interactive MCQ quiz based on the 100 objective questions in the supplied question bank.", "totalQuestions": 100, "units": ["Unit I – Understanding Gender", "Unit II – Gender Roles and Relations", "Unit III – Gender and Labour"], "questions": [{"id": "q1", "unit": "Unit I – Understanding Gender", "question": "Gender is primarily a ______ concept.", "options": ["Biological", "Social and cultural", "Genetic", "Physiological"], "answer": 1}, {"id": "q2", "unit": "Unit I – Understanding Gender", "question": "Sex mainly refers to:", "options": ["Social expectations", "Cultural traditions", "Biological and physiological characteristics", "Social roles"], "answer": 2}, {"id": "q3", "unit": "Unit I – Understanding Gender", "question": "Which of the following is associated with gender?", "options": ["Chromosomes only", "Reproductive organs only", "Social roles and expectations", "Blood group"], "answer": 2}, {"id": "q4", "unit": "Unit I – Understanding Gender", "question": "Gender is described as:", "options": ["Fixed across all societies", "Dynamic and varying across cultures and historical periods", "Completely biological", "Unrelated to society"], "answer": 1}, {"id": "q5", "unit": "Unit I – Understanding Gender", "question": "Studying gender helps promote:", "options": ["Inequality", "Discrimination", "Dignity, justice and equal opportunities", "Social divisions"], "answer": 2}, {"id": "q6", "unit": "Unit I – Understanding Gender", "question": "Women in India received the right to vote alongside men in:", "options": ["1920", "1935", "1947", "1950"], "answer": 1}, {"id": "q7", "unit": "Unit I – Understanding Gender", "question": "Article 14 of the Indian Constitution guarantees:", "options": ["Freedom of religion", "Equality before the law", "Right to education", "Right to property"], "answer": 1}, {"id": "q8", "unit": "Unit I – Understanding Gender", "question": "The “Status of Women in India” Report was published in:", "options": ["1950", "1965", "1975", "1985"], "answer": 2}, {"id": "q9", "unit": "Unit I – Understanding Gender", "question": "The 73rd Constitutional Amendment provided reservation for women in:", "options": ["Parliament", "Supreme Court", "Local governance", "Private companies"], "answer": 2}, {"id": "q10", "unit": "Unit I – Understanding Gender", "question": "Gender identity refers to:", "options": ["A person's biological organs", "A person's internal sense of their own gender", "A person's occupation", "A person's family background"], "answer": 1}, {"id": "q11", "unit": "Unit I – Understanding Gender", "question": "Gender expression includes:", "options": ["Clothing and hairstyle", "Chromosomes", "Hormones", "Reproductive organs"], "answer": 0}, {"id": "q12", "unit": "Unit I – Understanding Gender", "question": "Gender roles are mainly:", "options": ["Biologically fixed", "Socially and culturally defined expectations", "Genetically inherited", "Physiological characteristics"], "answer": 1}, {"id": "q13", "unit": "Unit I – Understanding Gender", "question": "Gender norms are:", "options": ["Informal rules and expectations about gendered behaviour", "Biological characteristics", "Medical conditions", "Legal punishments"], "answer": 0}, {"id": "q14", "unit": "Unit I – Understanding Gender", "question": "Gender equality means:", "options": ["Everyone must be treated identically in every situation", "Equal rights, responsibilities and opportunities regardless of gender", "Only women should receive opportunities", "Only men and women should have different roles"], "answer": 1}, {"id": "q15", "unit": "Unit I – Understanding Gender", "question": "Gender equity focuses on:", "options": ["Identical treatment in every situation", "Fair outcomes by addressing different needs and barriers", "Increasing discrimination", "Maintaining stereotypes"], "answer": 1}, {"id": "q16", "unit": "Unit I – Understanding Gender", "question": "Which is an example of a gender stereotype?", "options": ["People have different interests", "Men are natural leaders", "Everyone deserves education", "People have different abilities"], "answer": 1}, {"id": "q17", "unit": "Unit I – Understanding Gender", "question": "Gender discrimination means:", "options": ["Equal treatment of people", "Unfair treatment because of gender", "Cultural diversity", "Social cooperation"], "answer": 1}, {"id": "q18", "unit": "Unit I – Understanding Gender", "question": "Gender mainstreaming means:", "options": ["Ignoring gender issues", "Separating gender from policy-making", "Integrating gender perspectives into policies and programmes", "Supporting only one gender"], "answer": 2}, {"id": "q19", "unit": "Unit I – Understanding Gender", "question": "GBV stands for:", "options": ["Gender-Based Violence", "General Behavioural Variation", "Gender Balance Value", "Government-Based Violence"], "answer": 0}, {"id": "q20", "unit": "Unit I – Understanding Gender", "question": "Gender-based violence may include:", "options": ["Physical violence only", "Economic violence only", "Physical, sexual, psychological, emotional and economic violence", "None of these"], "answer": 2}, {"id": "q21", "unit": "Unit I – Understanding Gender", "question": "Gender attitudes refer to people's:", "options": ["Blood groups", "Beliefs, opinions, values and perceptions about gender", "Physical characteristics", "Genetic traits"], "answer": 1}, {"id": "q22", "unit": "Unit I – Understanding Gender", "question": "Gender attitudes begin developing through:", "options": ["Socialization", "Genetics alone", "Climate", "Geography"], "answer": 0}, {"id": "q23", "unit": "Unit I – Understanding Gender", "question": "Which of the following can shape gender attitudes?", "options": ["Family", "Schools", "Media", "All of the above"], "answer": 3}, {"id": "q24", "unit": "Unit I – Understanding Gender", "question": "Traditional gender attitudes generally support:", "options": ["Conventional gender roles", "Equal responsibilities in every situation", "Elimination of all social roles", "Complete individual freedom"], "answer": 0}, {"id": "q25", "unit": "Unit I – Understanding Gender", "question": "Egalitarian gender attitudes emphasize:", "options": ["Male superiority", "Female superiority", "Equal rights, opportunities and responsibilities", "Traditional roles only"], "answer": 2}, {"id": "q26", "unit": "Unit I – Understanding Gender", "question": "The construction of gender is shaped by:", "options": ["Culture and social institutions", "Historical contexts", "Everyday interactions", "All of the above"], "answer": 3}, {"id": "q27", "unit": "Unit I – Understanding Gender", "question": "The primary institution responsible for constructing gender during early childhood is:", "options": ["Workplace", "Family", "Government", "Media"], "answer": 1}, {"id": "q28", "unit": "Unit I – Understanding Gender", "question": "Schools can promote gender equality by:", "options": ["Reinforcing stereotypes", "Providing equal participation and opportunities", "Separating students permanently by gender", "Limiting career choices"], "answer": 1}, {"id": "q29", "unit": "Unit I – Understanding Gender", "question": "Media can influence gender construction through:", "options": ["Films and television", "Advertisements", "Social media", "All of the above"], "answer": 3}, {"id": "q30", "unit": "Unit I – Understanding Gender", "question": "Gender construction is:", "options": ["Completely fixed", "Dynamic and continuously evolving", "Determined only by biology", "Unrelated to social change"], "answer": 1}, {"id": "q31", "unit": "Unit I – Understanding Gender", "question": "Gender socialization is a:", "options": ["Short-term process", "Lifelong process", "Biological process only", "Medical process"], "answer": 1}, {"id": "q32", "unit": "Unit I – Understanding Gender", "question": "The first and most influential agent of gender socialization is:", "options": ["Family", "Workplace", "Government", "Internet"], "answer": 0}, {"id": "q33", "unit": "Unit I – Understanding Gender", "question": "Peer groups influence gender socialization mainly through:", "options": ["Social interactions and conformity", "Genetic inheritance", "Biological development", "Medical treatment"], "answer": 0}, {"id": "q34", "unit": "Unit I – Understanding Gender", "question": "Gender-sensitive socialization promotes:", "options": ["Stereotypes", "Inequality", "Equality, fairness and mutual respect", "Discrimination"], "answer": 2}, {"id": "q35", "unit": "Unit I – Understanding Gender", "question": "Girl was written by:", "options": ["Gogu Shyamala", "Jamaica Kincaid", "Krishna Kumar", "B. R. Ambedkar"], "answer": 1}, {"id": "q36", "unit": "Unit I – Understanding Gender", "question": "Girl mainly explores:", "options": ["Gender roles and social expectations", "Caste politics only", "Economic development", "Industrialization"], "answer": 0}, {"id": "q37", "unit": "Unit I – Understanding Gender", "question": "In Radam, the Jogini system primarily affected:", "options": ["Wealthy urban women", "Poor Dalit girls", "Educated men", "Village officials"], "answer": 1}, {"id": "q38", "unit": "Unit I – Understanding Gender", "question": "Who said “One is not born a woman but rather becomes a woman”?", "options": ["Jamaica Kincaid", "Gogu Shyamala", "Simone de Beauvoir", "Judi Brady"], "answer": 2}, {"id": "q39", "unit": "Unit I – Understanding Gender", "question": "Growing Up Male was written by:", "options": ["Krishna Kumar", "Mohammed Khadeer Babu", "Jamaica Kincaid", "Gogu Shyamala"], "answer": 0}, {"id": "q40", "unit": "Unit I – Understanding Gender", "question": "In How I Upstaged the 'Clevers' of My Class, the narrator gains recognition through his:", "options": ["Wealth", "Family background", "Acting performance as Gabbar Singh", "Academic rank"], "answer": 2}, {"id": "q41", "unit": "Unit II – Gender Roles and Relations", "question": "What is meant by the gender binary?", "options": ["Division into different age groups", "Strict division into male and female", "Division based on occupation", "Division based on caste"], "answer": 1}, {"id": "q42", "unit": "Unit II – Gender Roles and Relations", "question": "Biological sex is influenced by:", "options": ["Only chromosomes", "Only hormones", "Chromosomes, genes, gonads, hormones and reproductive structures", "Only social roles"], "answer": 2}, {"id": "q43", "unit": "Unit II – Gender Roles and Relations", "question": "What does cisgender mean?", "options": ["A person who changes gender", "A person whose gender generally corresponds with the sex assigned at birth", "An intersex person", "A person with high androgen"], "answer": 1}, {"id": "q44", "unit": "Unit II – Gender Roles and Relations", "question": "What is an intersex person?", "options": ["Someone whose biological characteristics do not fit typical male or female categories", "Someone who changes their clothes", "Someone who identifies only as male", "Someone who identifies only as female"], "answer": 0}, {"id": "q45", "unit": "Unit II – Gender Roles and Relations", "question": "A transgender person's gender identity:", "options": ["Always matches their assigned sex", "Differs from the gender assigned at birth", "Is determined only by chromosomes", "Cannot be expressed"], "answer": 1}, {"id": "q46", "unit": "Unit II – Gender Roles and Relations", "question": "Hijra refers to:", "options": ["A medical test", "A cultural grouping associated with transgender and intersex communities", "A hormone", "A chromosome"], "answer": 1}, {"id": "q47", "unit": "Unit II – Gender Roles and Relations", "question": "Gender identity means:", "options": ["A person's internal sense of their gender", "A person's physical height", "A person's biological age", "A person's occupation"], "answer": 0}, {"id": "q48", "unit": "Unit II – Gender Roles and Relations", "question": "Gender expression refers to:", "options": ["Chromosomes", "How a person expresses themselves through appearance and behaviour", "Hormone levels", "Reproductive organs"], "answer": 1}, {"id": "q49", "unit": "Unit II – Gender Roles and Relations", "question": "Which hormone contributes to the lowering of boys' voice pitch during puberty?", "options": ["Insulin", "Androgen", "Thyroxine", "Adrenaline"], "answer": 1}, {"id": "q50", "unit": "Unit II – Gender Roles and Relations", "question": "The approximate fundamental frequency of young children's voices mentioned in the material is:", "options": ["100 Hz", "200 Hz", "400 Hz", "600 Hz"], "answer": 2}, {"id": "q51", "unit": "Unit II – Gender Roles and Relations", "question": "The average fundamental frequency of an adult female voice is around:", "options": ["50 Hz", "100 Hz", "200 Hz", "400 Hz"], "answer": 2}, {"id": "q52", "unit": "Unit II – Gender Roles and Relations", "question": "Which singer is given as an example of a woman with a low voice?", "options": ["Lata Mangeshkar", "Gangubai Hangal", "Asha Bhosle", "Shreya Ghoshal"], "answer": 1}, {"id": "q53", "unit": "Unit II – Gender Roles and Relations", "question": "Which two men are mentioned as examples of relatively high-pitched voices?", "options": ["Sachin Tendulkar and Manmohan Singh", "Virat Kohli and Rahul Dravid", "Amitabh Bachchan and Aamir Khan", "Rajinikanth and Mammootty"], "answer": 0}, {"id": "q54", "unit": "Unit II – Gender Roles and Relations", "question": "What is gendering?", "options": ["A medical procedure", "The process through which society teaches gender roles", "A genetic process", "A type of sex test"], "answer": 1}, {"id": "q55", "unit": "Unit II – Gender Roles and Relations", "question": "Gender is described as:", "options": ["Completely fixed", "Only biological", "A dynamic and complex concept", "Determined only by chromosomes"], "answer": 2}, {"id": "q56", "unit": "Unit II – Gender Roles and Relations", "question": "Which is NOT a factor involved in gender?", "options": ["Biology", "Gender identity", "Gender expression", "Blood group"], "answer": 3}, {"id": "q57", "unit": "Unit II – Gender Roles and Relations", "question": "Gender roles are reinforced through:", "options": ["Families", "Schools", "Media and advertisements", "All of the above"], "answer": 3}, {"id": "q58", "unit": "Unit II – Gender Roles and Relations", "question": "What does the idea of a gender spectrum suggest?", "options": ["There are only two genders", "Gender has a range of identities and expressions", "Gender is purely biological", "Gender cannot vary"], "answer": 1}, {"id": "q59", "unit": "Unit II – Gender Roles and Relations", "question": "Who wrote Seeing Like a Feminist?", "options": ["Amartya Sen", "Nivedita Menon", "Mary E. John", "Manabi Bandyopadhyay"], "answer": 1}, {"id": "q60", "unit": "Unit II – Gender Roles and Relations", "question": "Sex selection can lead to:", "options": ["Gender balance", "Gender imbalance", "Equal opportunities", "Increased literacy"], "answer": 1}, {"id": "q61", "unit": "Unit II – Gender Roles and Relations", "question": "What does OSR stand for?", "options": ["Overall Social Ratio", "Overall Sex Ratio", "Official Sex Report", "Overall Survival Rate"], "answer": 1}, {"id": "q62", "unit": "Unit II – Gender Roles and Relations", "question": "What does CSR stand for?", "options": ["Child Sex Ratio", "Community Sex Ratio", "Cultural Social Ratio", "Child Survival Rate"], "answer": 0}, {"id": "q63", "unit": "Unit II – Gender Roles and Relations", "question": "Child Sex Ratio refers to:", "options": ["Females per 1,000 males in the total population", "Girls per 1,000 boys in the child population", "Boys per 1,000 girls", "Women per 1,000 children"], "answer": 1}, {"id": "q64", "unit": "Unit II – Gender Roles and Relations", "question": "What was India's Child Sex Ratio in 2011 according to the given material?", "options": ["983", "976", "945", "918"], "answer": 3}, {"id": "q65", "unit": "Unit II – Gender Roles and Relations", "question": "Which of the following contributes to son preference?", "options": ["Dowry", "Property inheritance", "Family expectations", "All of the above"], "answer": 3}, {"id": "q66", "unit": "Unit II – Gender Roles and Relations", "question": "Sons are traditionally preferred partly because they are expected to:", "options": ["Leave the family after marriage", "Continue the family name and support parents", "Avoid education", "Perform only household work"], "answer": 1}, {"id": "q67", "unit": "Unit II – Gender Roles and Relations", "question": "Which technology has been misused for sex determination?", "options": ["Ultrasound", "ECG", "Blood pressure monitoring", "Stethoscope"], "answer": 0}, {"id": "q68", "unit": "Unit II – Gender Roles and Relations", "question": "What is female foeticide?", "options": ["Killing a girl after birth", "Terminating a pregnancy because the foetus is female", "Educating girls", "Preventing child marriage"], "answer": 1}, {"id": "q69", "unit": "Unit II – Gender Roles and Relations", "question": "What is female infanticide?", "options": ["Sex determination before birth", "Killing a female child after birth", "Preventing pregnancy", "Denying education to girls"], "answer": 1}, {"id": "q70", "unit": "Unit II – Gender Roles and Relations", "question": "The PCPNDT Act was introduced in:", "options": ["1975", "1982", "1994", "2009"], "answer": 2}, {"id": "q71", "unit": "Unit II – Gender Roles and Relations", "question": "The PCPNDT Act aims to prevent:", "options": ["Women's education", "Misuse of prenatal diagnostic techniques for sex determination", "Medical treatment", "Child vaccination"], "answer": 1}, {"id": "q72", "unit": "Unit II – Gender Roles and Relations", "question": "What is a “marriage squeeze”?", "options": ["Equal numbers of men and women", "A shortage of women leading to difficulty in finding marriage partners", "Marriage between different communities", "Early marriage"], "answer": 1}, {"id": "q73", "unit": "Unit II – Gender Roles and Relations", "question": "Who discussed the concept of “missing women”?", "options": ["Amartya Sen", "Karl Marx", "Adam Smith", "John Keynes"], "answer": 0}, {"id": "q74", "unit": "Unit II – Gender Roles and Relations", "question": "The term “missing women” refers mainly to:", "options": ["Women who migrate", "Women absent due to discrimination and excess female mortality", "Women who are unemployed", "Women who do not marry"], "answer": 1}, {"id": "q75", "unit": "Unit II – Gender Roles and Relations", "question": "Which athlete was stripped of her Asian Games silver medal after a sex test?", "options": ["Dutee Chand", "Santhi Soundarajan", "Pinki Pramanik", "Caster Semenya"], "answer": 1}, {"id": "q76", "unit": "Unit II – Gender Roles and Relations", "question": "Who challenged the hyper-androgenism regulations at the Court of Arbitration for Sport?", "options": ["Santhi Soundarajan", "Pinki Pramanik", "Dutee Chand", "Manabi Bandyopadhyay"], "answer": 2}, {"id": "q77", "unit": "Unit II – Gender Roles and Relations", "question": "Which athlete's case involved inconclusive gender tests and later dropping of charges by the Calcutta High Court?", "options": ["Dutee Chand", "Pinki Pramanik", "Santhi Soundarajan", "Caster Semenya"], "answer": 1}, {"id": "q78", "unit": "Unit II – Gender Roles and Relations", "question": "Who became the first transgender college principal in India?", "options": ["Manabi Bandyopadhyay", "Dutee Chand", "Santhi Soundarajan", "Nivedita Menon"], "answer": 0}, {"id": "q79", "unit": "Unit II – Gender Roles and Relations", "question": "The Forum Against Sex Determination and Sex Pre-Selection (FASDSP) was established in:", "options": ["1975", "1982", "1985", "1994"], "answer": 2}, {"id": "q80", "unit": "Unit II – Gender Roles and Relations", "question": "In 2014, the Supreme Court of India recognized transgender people as:", "options": ["A separate caste", "A third gender", "A religious minority", "A new biological sex"], "answer": 1}, {"id": "q81", "unit": "Unit III – Gender and Labour", "question": "What is meant by sexual division of labour?", "options": ["Division of work according to age", "Division of work between men and women based on gender", "Division of work according to income", "Division of work according to education"], "answer": 1}, {"id": "q82", "unit": "Unit III – Gender and Labour", "question": "Which of the following is traditionally considered “women’s work”?", "options": ["Mining", "Construction", "Nursing and teaching", "Driving"], "answer": 2}, {"id": "q83", "unit": "Unit III – Gender and Labour", "question": "Which Act attempted to address wage inequality in India?", "options": ["Equal Remuneration Act, 1976", "Education Act, 1986", "Factory Act, 1948", "Labour Act, 1990"], "answer": 0}, {"id": "q84", "unit": "Unit III – Gender and Labour", "question": "What is meant by “invisible unpaid labour”?", "options": ["Work done secretly", "Unpaid work that is essential but often not recognized as work", "Work done only by men", "Work done outside the country"], "answer": 1}, {"id": "q85", "unit": "Unit III – Gender and Labour", "question": "Which term describes the difficulty women face in reaching higher professional positions?", "options": ["Mommy track", "Glass ceiling", "Gender gap", "Pay wall"], "answer": 1}, {"id": "q86", "unit": "Unit III – Gender and Labour", "question": "What is the “mommy track”?", "options": ["A career path for mothers with faster promotions", "Slower career advancement because of childcare responsibilities", "A training programme for mothers", "A government employment scheme"], "answer": 1}, {"id": "q87", "unit": "Unit III – Gender and Labour", "question": "Which of the following is an example of housework?", "options": ["Collecting water", "Cleaning", "Cooking", "All of the above"], "answer": 3}, {"id": "q88", "unit": "Unit III – Gender and Labour", "question": "Why is housework called “invisible labour”?", "options": ["It is done at night", "It is usually unpaid and often goes unnoticed", "It requires no effort", "It is performed outside the home"], "answer": 1}, {"id": "q89", "unit": "Unit III – Gender and Labour", "question": "Who wrote the essay I Want a Wife?", "options": ["Judy Brady", "Vimala", "Indra Nooyi", "Gauhar Sultana"], "answer": 0}, {"id": "q90", "unit": "Unit III – Gender and Labour", "question": "What is the main message of I Want a Wife?", "options": ["Women should only work at home", "Marriage should involve equality and shared responsibilities", "Men should do all household work", "Women should avoid careers"], "answer": 1}, {"id": "q91", "unit": "Unit III – Gender and Labour", "question": "Who wrote Vantillu (The Kitchen)?", "options": ["Judy Brady", "Vimala", "Saritha", "Anuradha Naik"], "answer": 1}, {"id": "q92", "unit": "Unit III – Gender and Labour", "question": "In Vantillu, the kitchen mainly symbolizes:", "options": ["Wealth and luxury", "Women’s unpaid labour and loss of freedom", "Education", "Political power"], "answer": 1}, {"id": "q93", "unit": "Unit III – Gender and Labour", "question": "According to the material, approximately how many hours do Indian women spend on household work daily?", "options": ["1 hour", "2 hours", "5½ hours", "10 hours"], "answer": 2}, {"id": "q94", "unit": "Unit III – Gender and Labour", "question": "Approximately how much time do Indian men spend on household work daily?", "options": ["30–45 minutes", "2–3 hours", "5 hours", "6 hours"], "answer": 0}, {"id": "q95", "unit": "Unit III – Gender and Labour", "question": "The “Share the Load” campaign emphasizes:", "options": ["Women should do all household work", "Household responsibilities should be shared", "Men should work outside only", "Children should do housework"], "answer": 1}, {"id": "q96", "unit": "Unit III – Gender and Labour", "question": "Which Constitutional Amendments provided reservations for women in elected bodies?", "options": ["42nd and 44th", "61st and 62nd", "73rd and 74th", "86th and 87th"], "answer": 2}, {"id": "q97", "unit": "Unit III – Gender and Labour", "question": "Who was the woman who became the first woman driver in the Delhi Transport Corporation?", "options": ["Gauhar Sultana", "Vankadarath Saritha", "Ramya Krishna", "Sayamma"], "answer": 1}, {"id": "q98", "unit": "Unit III – Gender and Labour", "question": "What are the three major types of women’s work discussed in the chapter?", "options": ["Paid, voluntary and professional", "Unpaid family work, home-based work and housework", "Agricultural, industrial and political", "Rural, urban and international"], "answer": 1}, {"id": "q99", "unit": "Unit III – Gender and Labour", "question": "Why was Sayamma officially classified as a “non-worker”?", "options": ["She did not work", "She was unemployed", "She did not earn a regular income", "She was a student"], "answer": 2}, {"id": "q100", "unit": "Unit III – Gender and Labour", "question": "What is the central idea of the unit Gender and Labour?", "options": ["Men are naturally better workers", "Women should focus only on household work", "Women’s work has economic and social value and should be recognized", "Domestic work has no economic value"], "answer": 2}]}</script>
+<script>
+const bank=JSON.parse(document.getElementById("quiz-data").textContent);
+let quiz=[], index=0, selected=[], score=0;
+
+const unit=document.getElementById("unit");
+unit.innerHTML='<option value="ALL">All Units</option>'+
+  bank.units.map(u=>`<option value="${escapeHtml(u)}">${escapeHtml(u)}</option>`).join("");
+
+function escapeHtml(s){
+  return String(s).replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]));
+}
+function shuffle(a){return [...a].sort(()=>Math.random()-.5)}
+function startQuick(){
+  document.getElementById("count").value="10";
+  document.getElementById("unit").value="ALL";
+  startQuiz();
+}
+function startQuiz(){
+  const unitValue=document.getElementById("unit").value;
+  let pool=unitValue==="ALL"?bank.questions:bank.questions.filter(q=>q.unit===unitValue);
+  const n=Math.min(Number(document.getElementById("count").value),pool.length);
+  quiz=shuffle(pool).slice(0,n);
+  index=0; selected=new Array(n).fill(null); score=0;
+  document.getElementById("setup").classList.add("hidden");
+  document.getElementById("result").classList.add("hidden");
+  document.getElementById("quiz").classList.remove("hidden");
+  render();
+}
+function render(){
+  const q=quiz[index];
+  document.getElementById("unitName").textContent=q.unit;
+  document.getElementById("counter").textContent=`${index+1} / ${quiz.length}`;
+  document.getElementById("questionNo").textContent=`Question ${index+1}`;
+  document.getElementById("liveScore").textContent=`Score: ${score}`;
+  document.getElementById("progressBar").style.width=((index+1)/quiz.length*100)+"%";
+  document.getElementById("question").textContent=q.question;
+  const box=document.getElementById("options"); box.innerHTML="";
+  q.options.forEach((opt,i)=>{
+    const b=document.createElement("button");
+    b.className="option";
+    b.textContent=`${String.fromCharCode(65+i)}. ${opt}`;
+    b.onclick=()=>choose(i);
+    box.appendChild(b);
+  });
+  document.getElementById("prevBtn").disabled=index===0;
+  document.getElementById("nextBtn").textContent=index===quiz.length-1?"Finish":"Next";
+  document.getElementById("feedback").classList.add("hidden");
+  if(selected[index]!==null) showAnswer();
+}
+function choose(i){
+  if(selected[index]!==null)return;
+  selected[index]=i;
+  if(i===quiz[index].answer)score++;
+  showAnswer();
+}
+function showAnswer(){
+  const q=quiz[index], choice=selected[index];
+  document.querySelectorAll(".option").forEach((b,i)=>{
+    b.disabled=true;
+    if(i===q.answer)b.classList.add("correct");
+    else if(i===choice)b.classList.add("wrong");
+  });
+  const f=document.getElementById("feedback");
+  f.classList.remove("hidden");
+  f.textContent=choice===q.answer
+    ? "Correct answer: "+q.options[q.answer]
+    : "Correct answer: "+q.options[q.answer];
+  document.getElementById("liveScore").textContent=`Score: ${score}`;
+}
+function nextQuestion(){
+  if(selected[index]===null){alert("Choose an answer first.");return}
+  if(index<quiz.length-1){index++;render()}else finish()
+}
+function previousQuestion(){if(index>0){index--;render()}}
+function finish(){
+  document.getElementById("quiz").classList.add("hidden");
+  document.getElementById("result").classList.remove("hidden");
+  const wrong=quiz.length-score, pct=Math.round(score/quiz.length*100);
+  document.getElementById("score").textContent=`${score} / ${quiz.length}`;
+  document.getElementById("correctStat").textContent=score;
+  document.getElementById("wrongStat").textContent=wrong;
+  document.getElementById("percentStat").textContent=pct+"%";
+  document.getElementById("message").textContent=
+    pct>=80?"Excellent preparation!":
+    pct>=60?"Good job — revise the missed topics.":
+    "Keep practicing — another round will help.";
+}
+function restart(){
+  document.getElementById("result").classList.add("hidden");
+  document.getElementById("setup").classList.remove("hidden");
+}
+</script>
+</body>
+</html>
