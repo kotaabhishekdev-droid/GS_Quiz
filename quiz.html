@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gender Studies Quiz</title>
+<style>
+:root{--bg:#f4f6fb;--card:#fff;--text:#172033;--muted:#64748b;--accent:#4f46e5;--good:#16a34a;--bad:#dc2626;--border:#e2e8f0}
+*{box-sizing:border-box}body{margin:0;font-family:Inter,system-ui,Arial,sans-serif;background:var(--bg);color:var(--text)}
+.container{max-width:900px;margin:auto;padding:24px}
+header{background:linear-gradient(135deg,#111827,#4f46e5);color:white;border-radius:20px;padding:28px;margin-bottom:20px;box-shadow:0 12px 30px #0002}
+header h1{margin:0 0 8px;font-size:30px}header p{margin:0;opacity:.88}
+.panel,.quiz-card,.result{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:22px;margin-bottom:18px;box-shadow:0 6px 18px #0000000a}
+.controls{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+label{font-size:13px;font-weight:700;color:var(--muted)}select,input,button{font:inherit}
+select,input{width:100%;padding:12px;border:1px solid var(--border);border-radius:10px;margin-top:6px;background:white}
+button{border:0;border-radius:10px;padding:12px 18px;font-weight:700;cursor:pointer}
+.primary{background:var(--accent);color:#fff}.secondary{background:#eef2ff;color:#3730a3}.danger{background:#fee2e2;color:#991b1b}
+.topbar{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:16px}
+.progress{height:9px;background:#e5e7eb;border-radius:99px;overflow:hidden}.progress>div{height:100%;background:var(--accent);transition:.25s}
+.meta{display:flex;justify-content:space-between;color:var(--muted);font-size:13px;margin:10px 0}
+.question{font-size:21px;font-weight:750;line-height:1.45;margin:20px 0}
+.option{display:block;width:100%;text-align:left;background:white;border:1px solid var(--border);margin:10px 0;padding:15px;border-radius:12px;transition:.15s}
+.option:hover{border-color:#818cf8;background:#f8faff}.option.selected{border-color:var(--accent);background:#eef2ff}
+.option.correct{border-color:var(--good);background:#ecfdf5}.option.wrong{border-color:var(--bad);background:#fef2f2}
+.feedback{margin-top:14px;padding:14px;border-radius:12px;background:#f8fafc;color:#334155;line-height:1.5}
+.actions{display:flex;justify-content:space-between;gap:10px;margin-top:18px}
+.hidden{display:none}.score{font-size:52px;font-weight:800;color:var(--accent);text-align:center}.result{text-align:center}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:18px 0}.stat{background:#f8fafc;border-radius:12px;padding:15px}.stat b{display:block;font-size:22px}
+.small{font-size:13px;color:var(--muted)}@media(max-width:650px){.controls,.stats{grid-template-columns:1fr}.container{padding:12px}header{padding:22px}.question{font-size:18px}}
+</style>
+</head>
+<body>
+<div class="container">
+<header>
+  <h1>Gender Studies Quiz</h1>
+  <p>100 MCQs from the supplied question bank • Units I–III</p>
+</header>
+
+<section id="setup" class="panel">
+  <div class="controls">
+    <div><label>UNIT</label><select id="unit"></select></div>
+    <div><label>NUMBER OF QUESTIONS</label>
+      <select id="count"><option>10</option><option>20</option><option>30</option><option>40</option><option>50</option><option value="100">All 100</option></select>
+    </div>
+  </div>
+  <div style="margin-top:14px;display:flex;gap:10px;flex-wrap:wrap">
+    <button class="primary" onclick="startQuiz()">Start Quiz</button>
+    <button class="secondary" onclick="startQuick()">Quick 10</button>
+  </div>
+  <p class="small" style="margin-bottom:0">The quiz reads questions from <b>quiz_questions.json</b> in the same folder.</p>
+</section>
+
+<section id="quiz" class="hidden">
+  <div class="panel">
+    <div class="topbar"><b id="unitName"></b><span id="counter"></span></div>
+    <div class="progress"><div id="progressBar"></div></div>
+  </div>
+  <div class="quiz-card">
+    <div class="meta"><span id="questionNo"></span><span id="liveScore"></span></div>
+    <div id="question" class="question"></div>
+    <div id="options"></div>
+    <div id="feedback" class="feedback hidden"></div>
+    <div class="actions">
+      <button class="secondary" id="prevBtn" onclick="previousQuestion()">Previous</button>
+      <button class="primary" id="nextBtn" onclick="nextQuestion()">Next</button>
+    </div>
+  </div>
+</section>
+
+<section id="result" class="result hidden">
+  <div class="small">QUIZ COMPLETE</div>
+  <div id="score" class="score"></div>
+  <div id="message"></div>
+  <div class="stats">
+    <div class="stat"><b id="correctStat">0</b>Correct</div>
+    <div class="stat"><b id="wrongStat">0</b>Wrong</div>
+    <div class="stat"><b id="percentStat">0%</b>Score</div>
+  </div>
+  <button class="primary" onclick="restart()">Try Again</button>
+</section>
+</div>
+
+<script>
+let bank=null, quiz=[], index=0, selected=[], score=0;
+const unitFiles = {"Unit I – Understanding Gender": "Unit_I_-_Understanding_Gender.json", "Unit II – Gender Roles and Relations": "Unit_II_-_Gender_Roles_and_Relations.json", "Unit III – Gender and Labour": "Unit_III_-_Gender_and_Labour.json"};
+
+async function loadBank(){
+  try{
+    const r=await fetch("quiz_questions.json");
+    if(!r.ok) throw new Error("Could not load quiz_questions.json");
+    bank=await r.json();
+    const unit=document.getElementById("unit");
+    unit.innerHTML='<option value="ALL">All Units</option>'+bank.units.map(u=>`<option>${u}</option>`).join("");
+  }catch(e){
+    document.getElementById("setup").innerHTML='<b>Could not load quiz_questions.json.</b><p>Keep quiz.html and quiz_questions.json in the same folder and open the module through a local web server.</p><p class="small">'+e.message+'</p>';
+  }
+}
+function shuffle(a){return [...a].sort(()=>Math.random()-.5)}
+function startQuick(){document.getElementById("count").value="10";document.getElementById("unit").value="ALL";startQuiz()}
+async function startQuiz(){
+  const unit=document.getElementById("unit").value;
+  let pool;
+  if(unit==="ALL") pool=bank.questions;
+  else {
+    const r=await fetch(unitFiles[unit]);
+    if(!r.ok){alert("Could not load the selected unit JSON file.");return}
+    const unitData=await r.json();
+    pool=unitData.questions;
+  }
+  const n=Math.min(Number(document.getElementById("count").value),pool.length);
+  quiz=shuffle(pool).slice(0,n); index=0; selected=new Array(n).fill(null); score=0;
+  document.getElementById("setup").classList.add("hidden");
+  document.getElementById("result").classList.add("hidden");
+  document.getElementById("quiz").classList.remove("hidden");
+  render();
+}
+function render(){
+  const q=quiz[index];
+  document.getElementById("unitName").textContent=q.unit;
+  document.getElementById("counter").textContent=`${index+1} / ${quiz.length}`;
+  document.getElementById("questionNo").textContent=`Question ${index+1}`;
+  document.getElementById("liveScore").textContent=`Score: ${score}`;
+  document.getElementById("progressBar").style.width=((index+1)/quiz.length*100)+"%";
+  document.getElementById("question").textContent=q.question;
+  const box=document.getElementById("options"); box.innerHTML="";
+  q.options.forEach((opt,i)=>{
+    const b=document.createElement("button"); b.className="option"; b.textContent=`${String.fromCharCode(65+i)}. ${opt}`;
+    b.onclick=()=>choose(i); box.appendChild(b);
+  });
+  document.getElementById("prevBtn").disabled=index===0;
+  document.getElementById("nextBtn").textContent=index===quiz.length-1?"Finish":"Next";
+  document.getElementById("feedback").classList.add("hidden");
+  if(selected[index]!==null) showAnswer();
+}
+function choose(i){
+  if(selected[index]!==null)return;
+  selected[index]=i;
+  if(i===quiz[index].answer)score++;
+  showAnswer();
+}
+function showAnswer(){
+  const q=quiz[index], choice=selected[index];
+  document.querySelectorAll(".option").forEach((b,i)=>{
+    b.disabled=true;
+    if(i===q.answer)b.classList.add("correct");
+    else if(i===choice)b.classList.add("wrong");
+  });
+  const f=document.getElementById("feedback");
+  f.classList.remove("hidden");
+  f.innerHTML=choice===q.answer?`Correct — ${q.options[q.answer]}`:`Correct answer: <b>${q.options[q.answer]}</b>`;
+  document.getElementById("liveScore").textContent=`Score: ${score}`;
+}
+function nextQuestion(){
+  if(selected[index]===null){alert("Choose an answer first.");return}
+  if(index<quiz.length-1){index++;render()}else finish()
+}
+function previousQuestion(){if(index>0){index--;render()}}
+function finish(){
+  document.getElementById("quiz").classList.add("hidden");
+  document.getElementById("result").classList.remove("hidden");
+  const wrong=quiz.length-score, pct=Math.round(score/quiz.length*100);
+  document.getElementById("score").textContent=`${score} / ${quiz.length}`;
+  document.getElementById("correctStat").textContent=score;
+  document.getElementById("wrongStat").textContent=wrong;
+  document.getElementById("percentStat").textContent=pct+"%";
+  document.getElementById("message").textContent=pct>=80?"Excellent preparation!":pct>=60?"Good job — revise the missed topics.":"Keep practicing — another round will help.";
+}
+function restart(){document.getElementById("result").classList.add("hidden");document.getElementById("setup").classList.remove("hidden")}
+loadBank();
+</script>
+</body>
+</html>

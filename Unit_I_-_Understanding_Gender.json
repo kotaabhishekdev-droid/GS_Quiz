@@ -1,0 +1,487 @@
+{
+  "title": "Unit I – Understanding Gender",
+  "source": "QB 1.pdf",
+  "totalQuestions": 40,
+  "questions": [
+    {
+      "id": "q1",
+      "unit": "Unit I – Understanding Gender",
+      "question": "Gender is primarily a ______ concept.",
+      "options": [
+        "Biological",
+        "Social and cultural",
+        "Genetic",
+        "Physiological"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q2",
+      "unit": "Unit I – Understanding Gender",
+      "question": "Sex mainly refers to:",
+      "options": [
+        "Social expectations",
+        "Cultural traditions",
+        "Biological and physiological characteristics",
+        "Social roles"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q3",
+      "unit": "Unit I – Understanding Gender",
+      "question": "Which of the following is associated with gender?",
+      "options": [
+        "Chromosomes only",
+        "Reproductive organs only",
+        "Social roles and expectations",
+        "Blood group"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q4",
+      "unit": "Unit I – Understanding Gender",
+      "question": "Gender is described as:",
+      "options": [
+        "Fixed across all societies",
+        "Dynamic and varying across cultures and historical periods",
+        "Completely biological",
+        "Unrelated to society"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q5",
+      "unit": "Unit I – Understanding Gender",
+      "question": "Studying gender helps promote:",
+      "options": [
+        "Inequality",
+        "Discrimination",
+        "Dignity, justice and equal opportunities",
+        "Social divisions"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q6",
+      "unit": "Unit I – Understanding Gender",
+      "question": "Women in India received the right to vote alongside men in:",
+      "options": [
+        "1920",
+        "1935",
+        "1947",
+        "1950"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q7",
+      "unit": "Unit I – Understanding Gender",
+      "question": "Article 14 of the Indian Constitution guarantees:",
+      "options": [
+        "Freedom of religion",
+        "Equality before the law",
+        "Right to education",
+        "Right to property"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q8",
+      "unit": "Unit I – Understanding Gender",
+      "question": "The “Status of Women in India” Report was published in:",
+      "options": [
+        "1950",
+        "1965",
+        "1975",
+        "1985"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q9",
+      "unit": "Unit I – Understanding Gender",
+      "question": "The 73rd Constitutional Amendment provided reservation for women in:",
+      "options": [
+        "Parliament",
+        "Supreme Court",
+        "Local governance",
+        "Private companies"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q10",
+      "unit": "Unit I – Understanding Gender",
+      "question": "Gender identity refers to:",
+      "options": [
+        "A person's biological organs",
+        "A person's internal sense of their own gender",
+        "A person's occupation",
+        "A person's family background"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q11",
+      "unit": "Unit I – Understanding Gender",
+      "question": "Gender expression includes:",
+      "options": [
+        "Clothing and hairstyle",
+        "Chromosomes",
+        "Hormones",
+        "Reproductive organs"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q12",
+      "unit": "Unit I – Understanding Gender",
+      "question": "Gender roles are mainly:",
+      "options": [
+        "Biologically fixed",
+        "Socially and culturally defined expectations",
+        "Genetically inherited",
+        "Physiological characteristics"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q13",
+      "unit": "Unit I – Understanding Gender",
+      "question": "Gender norms are:",
+      "options": [
+        "Informal rules and expectations about gendered behaviour",
+        "Biological characteristics",
+        "Medical conditions",
+        "Legal punishments"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q14",
+      "unit": "Unit I – Understanding Gender",
+      "question": "Gender equality means:",
+      "options": [
+        "Everyone must be treated identically in every situation",
+        "Equal rights, responsibilities and opportunities regardless of gender",
+        "Only women should receive opportunities",
+        "Only men and women should have different roles"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q15",
+      "unit": "Unit I – Understanding Gender",
+      "question": "Gender equity focuses on:",
+      "options": [
+        "Identical treatment in every situation",
+        "Fair outcomes by addressing different needs and barriers",
+        "Increasing discrimination",
+        "Maintaining stereotypes"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q16",
+      "unit": "Unit I – Understanding Gender",
+      "question": "Which is an example of a gender stereotype?",
+      "options": [
+        "People have different interests",
+        "Men are natural leaders",
+        "Everyone deserves education",
+        "People have different abilities"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q17",
+      "unit": "Unit I – Understanding Gender",
+      "question": "Gender discrimination means:",
+      "options": [
+        "Equal treatment of people",
+        "Unfair treatment because of gender",
+        "Cultural diversity",
+        "Social cooperation"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q18",
+      "unit": "Unit I – Understanding Gender",
+      "question": "Gender mainstreaming means:",
+      "options": [
+        "Ignoring gender issues",
+        "Separating gender from policy-making",
+        "Integrating gender perspectives into policies and programmes",
+        "Supporting only one gender"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q19",
+      "unit": "Unit I – Understanding Gender",
+      "question": "GBV stands for:",
+      "options": [
+        "Gender-Based Violence",
+        "General Behavioural Variation",
+        "Gender Balance Value",
+        "Government-Based Violence"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q20",
+      "unit": "Unit I – Understanding Gender",
+      "question": "Gender-based violence may include:",
+      "options": [
+        "Physical violence only",
+        "Economic violence only",
+        "Physical, sexual, psychological, emotional and economic violence",
+        "None of these"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q21",
+      "unit": "Unit I – Understanding Gender",
+      "question": "Gender attitudes refer to people's:",
+      "options": [
+        "Blood groups",
+        "Beliefs, opinions, values and perceptions about gender",
+        "Physical characteristics",
+        "Genetic traits"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q22",
+      "unit": "Unit I – Understanding Gender",
+      "question": "Gender attitudes begin developing through:",
+      "options": [
+        "Socialization",
+        "Genetics alone",
+        "Climate",
+        "Geography"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q23",
+      "unit": "Unit I – Understanding Gender",
+      "question": "Which of the following can shape gender attitudes?",
+      "options": [
+        "Family",
+        "Schools",
+        "Media",
+        "All of the above"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q24",
+      "unit": "Unit I – Understanding Gender",
+      "question": "Traditional gender attitudes generally support:",
+      "options": [
+        "Conventional gender roles",
+        "Equal responsibilities in every situation",
+        "Elimination of all social roles",
+        "Complete individual freedom"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q25",
+      "unit": "Unit I – Understanding Gender",
+      "question": "Egalitarian gender attitudes emphasize:",
+      "options": [
+        "Male superiority",
+        "Female superiority",
+        "Equal rights, opportunities and responsibilities",
+        "Traditional roles only"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q26",
+      "unit": "Unit I – Understanding Gender",
+      "question": "The construction of gender is shaped by:",
+      "options": [
+        "Culture and social institutions",
+        "Historical contexts",
+        "Everyday interactions",
+        "All of the above"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q27",
+      "unit": "Unit I – Understanding Gender",
+      "question": "The primary institution responsible for constructing gender during early childhood is:",
+      "options": [
+        "Workplace",
+        "Family",
+        "Government",
+        "Media"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q28",
+      "unit": "Unit I – Understanding Gender",
+      "question": "Schools can promote gender equality by:",
+      "options": [
+        "Reinforcing stereotypes",
+        "Providing equal participation and opportunities",
+        "Separating students permanently by gender",
+        "Limiting career choices"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q29",
+      "unit": "Unit I – Understanding Gender",
+      "question": "Media can influence gender construction through:",
+      "options": [
+        "Films and television",
+        "Advertisements",
+        "Social media",
+        "All of the above"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q30",
+      "unit": "Unit I – Understanding Gender",
+      "question": "Gender construction is:",
+      "options": [
+        "Completely fixed",
+        "Dynamic and continuously evolving",
+        "Determined only by biology",
+        "Unrelated to social change"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q31",
+      "unit": "Unit I – Understanding Gender",
+      "question": "Gender socialization is a:",
+      "options": [
+        "Short-term process",
+        "Lifelong process",
+        "Biological process only",
+        "Medical process"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q32",
+      "unit": "Unit I – Understanding Gender",
+      "question": "The first and most influential agent of gender socialization is:",
+      "options": [
+        "Family",
+        "Workplace",
+        "Government",
+        "Internet"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q33",
+      "unit": "Unit I – Understanding Gender",
+      "question": "Peer groups influence gender socialization mainly through:",
+      "options": [
+        "Social interactions and conformity",
+        "Genetic inheritance",
+        "Biological development",
+        "Medical treatment"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q34",
+      "unit": "Unit I – Understanding Gender",
+      "question": "Gender-sensitive socialization promotes:",
+      "options": [
+        "Stereotypes",
+        "Inequality",
+        "Equality, fairness and mutual respect",
+        "Discrimination"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q35",
+      "unit": "Unit I – Understanding Gender",
+      "question": "Girl was written by:",
+      "options": [
+        "Gogu Shyamala",
+        "Jamaica Kincaid",
+        "Krishna Kumar",
+        "B. R. Ambedkar"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q36",
+      "unit": "Unit I – Understanding Gender",
+      "question": "Girl mainly explores:",
+      "options": [
+        "Gender roles and social expectations",
+        "Caste politics only",
+        "Economic development",
+        "Industrialization"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q37",
+      "unit": "Unit I – Understanding Gender",
+      "question": "In Radam, the Jogini system primarily affected:",
+      "options": [
+        "Wealthy urban women",
+        "Poor Dalit girls",
+        "Educated men",
+        "Village officials"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q38",
+      "unit": "Unit I – Understanding Gender",
+      "question": "Who said “One is not born a woman but rather becomes a woman”?",
+      "options": [
+        "Jamaica Kincaid",
+        "Gogu Shyamala",
+        "Simone de Beauvoir",
+        "Judi Brady"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q39",
+      "unit": "Unit I – Understanding Gender",
+      "question": "Growing Up Male was written by:",
+      "options": [
+        "Krishna Kumar",
+        "Mohammed Khadeer Babu",
+        "Jamaica Kincaid",
+        "Gogu Shyamala"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q40",
+      "unit": "Unit I – Understanding Gender",
+      "question": "In How I Upstaged the 'Clevers' of My Class, the narrator gains recognition through his:",
+      "options": [
+        "Wealth",
+        "Family background",
+        "Acting performance as Gabbar Singh",
+        "Academic rank"
+      ],
+      "answer": 2
+    }
+  ]
+}

@@ -1,0 +1,487 @@
+{
+  "title": "Unit II – Gender Roles and Relations",
+  "source": "QB 1.pdf",
+  "totalQuestions": 40,
+  "questions": [
+    {
+      "id": "q41",
+      "unit": "Unit II – Gender Roles and Relations",
+      "question": "What is meant by the gender binary?",
+      "options": [
+        "Division into different age groups",
+        "Strict division into male and female",
+        "Division based on occupation",
+        "Division based on caste"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q42",
+      "unit": "Unit II – Gender Roles and Relations",
+      "question": "Biological sex is influenced by:",
+      "options": [
+        "Only chromosomes",
+        "Only hormones",
+        "Chromosomes, genes, gonads, hormones and reproductive structures",
+        "Only social roles"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q43",
+      "unit": "Unit II – Gender Roles and Relations",
+      "question": "What does cisgender mean?",
+      "options": [
+        "A person who changes gender",
+        "A person whose gender generally corresponds with the sex assigned at birth",
+        "An intersex person",
+        "A person with high androgen"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q44",
+      "unit": "Unit II – Gender Roles and Relations",
+      "question": "What is an intersex person?",
+      "options": [
+        "Someone whose biological characteristics do not fit typical male or female categories",
+        "Someone who changes their clothes",
+        "Someone who identifies only as male",
+        "Someone who identifies only as female"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q45",
+      "unit": "Unit II – Gender Roles and Relations",
+      "question": "A transgender person's gender identity:",
+      "options": [
+        "Always matches their assigned sex",
+        "Differs from the gender assigned at birth",
+        "Is determined only by chromosomes",
+        "Cannot be expressed"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q46",
+      "unit": "Unit II – Gender Roles and Relations",
+      "question": "Hijra refers to:",
+      "options": [
+        "A medical test",
+        "A cultural grouping associated with transgender and intersex communities",
+        "A hormone",
+        "A chromosome"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q47",
+      "unit": "Unit II – Gender Roles and Relations",
+      "question": "Gender identity means:",
+      "options": [
+        "A person's internal sense of their gender",
+        "A person's physical height",
+        "A person's biological age",
+        "A person's occupation"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q48",
+      "unit": "Unit II – Gender Roles and Relations",
+      "question": "Gender expression refers to:",
+      "options": [
+        "Chromosomes",
+        "How a person expresses themselves through appearance and behaviour",
+        "Hormone levels",
+        "Reproductive organs"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q49",
+      "unit": "Unit II – Gender Roles and Relations",
+      "question": "Which hormone contributes to the lowering of boys' voice pitch during puberty?",
+      "options": [
+        "Insulin",
+        "Androgen",
+        "Thyroxine",
+        "Adrenaline"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q50",
+      "unit": "Unit II – Gender Roles and Relations",
+      "question": "The approximate fundamental frequency of young children's voices mentioned in the material is:",
+      "options": [
+        "100 Hz",
+        "200 Hz",
+        "400 Hz",
+        "600 Hz"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q51",
+      "unit": "Unit II – Gender Roles and Relations",
+      "question": "The average fundamental frequency of an adult female voice is around:",
+      "options": [
+        "50 Hz",
+        "100 Hz",
+        "200 Hz",
+        "400 Hz"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q52",
+      "unit": "Unit II – Gender Roles and Relations",
+      "question": "Which singer is given as an example of a woman with a low voice?",
+      "options": [
+        "Lata Mangeshkar",
+        "Gangubai Hangal",
+        "Asha Bhosle",
+        "Shreya Ghoshal"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q53",
+      "unit": "Unit II – Gender Roles and Relations",
+      "question": "Which two men are mentioned as examples of relatively high-pitched voices?",
+      "options": [
+        "Sachin Tendulkar and Manmohan Singh",
+        "Virat Kohli and Rahul Dravid",
+        "Amitabh Bachchan and Aamir Khan",
+        "Rajinikanth and Mammootty"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q54",
+      "unit": "Unit II – Gender Roles and Relations",
+      "question": "What is gendering?",
+      "options": [
+        "A medical procedure",
+        "The process through which society teaches gender roles",
+        "A genetic process",
+        "A type of sex test"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q55",
+      "unit": "Unit II – Gender Roles and Relations",
+      "question": "Gender is described as:",
+      "options": [
+        "Completely fixed",
+        "Only biological",
+        "A dynamic and complex concept",
+        "Determined only by chromosomes"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q56",
+      "unit": "Unit II – Gender Roles and Relations",
+      "question": "Which is NOT a factor involved in gender?",
+      "options": [
+        "Biology",
+        "Gender identity",
+        "Gender expression",
+        "Blood group"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q57",
+      "unit": "Unit II – Gender Roles and Relations",
+      "question": "Gender roles are reinforced through:",
+      "options": [
+        "Families",
+        "Schools",
+        "Media and advertisements",
+        "All of the above"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q58",
+      "unit": "Unit II – Gender Roles and Relations",
+      "question": "What does the idea of a gender spectrum suggest?",
+      "options": [
+        "There are only two genders",
+        "Gender has a range of identities and expressions",
+        "Gender is purely biological",
+        "Gender cannot vary"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q59",
+      "unit": "Unit II – Gender Roles and Relations",
+      "question": "Who wrote Seeing Like a Feminist?",
+      "options": [
+        "Amartya Sen",
+        "Nivedita Menon",
+        "Mary E. John",
+        "Manabi Bandyopadhyay"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q60",
+      "unit": "Unit II – Gender Roles and Relations",
+      "question": "Sex selection can lead to:",
+      "options": [
+        "Gender balance",
+        "Gender imbalance",
+        "Equal opportunities",
+        "Increased literacy"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q61",
+      "unit": "Unit II – Gender Roles and Relations",
+      "question": "What does OSR stand for?",
+      "options": [
+        "Overall Social Ratio",
+        "Overall Sex Ratio",
+        "Official Sex Report",
+        "Overall Survival Rate"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q62",
+      "unit": "Unit II – Gender Roles and Relations",
+      "question": "What does CSR stand for?",
+      "options": [
+        "Child Sex Ratio",
+        "Community Sex Ratio",
+        "Cultural Social Ratio",
+        "Child Survival Rate"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q63",
+      "unit": "Unit II – Gender Roles and Relations",
+      "question": "Child Sex Ratio refers to:",
+      "options": [
+        "Females per 1,000 males in the total population",
+        "Girls per 1,000 boys in the child population",
+        "Boys per 1,000 girls",
+        "Women per 1,000 children"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q64",
+      "unit": "Unit II – Gender Roles and Relations",
+      "question": "What was India's Child Sex Ratio in 2011 according to the given material?",
+      "options": [
+        "983",
+        "976",
+        "945",
+        "918"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q65",
+      "unit": "Unit II – Gender Roles and Relations",
+      "question": "Which of the following contributes to son preference?",
+      "options": [
+        "Dowry",
+        "Property inheritance",
+        "Family expectations",
+        "All of the above"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q66",
+      "unit": "Unit II – Gender Roles and Relations",
+      "question": "Sons are traditionally preferred partly because they are expected to:",
+      "options": [
+        "Leave the family after marriage",
+        "Continue the family name and support parents",
+        "Avoid education",
+        "Perform only household work"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q67",
+      "unit": "Unit II – Gender Roles and Relations",
+      "question": "Which technology has been misused for sex determination?",
+      "options": [
+        "Ultrasound",
+        "ECG",
+        "Blood pressure monitoring",
+        "Stethoscope"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q68",
+      "unit": "Unit II – Gender Roles and Relations",
+      "question": "What is female foeticide?",
+      "options": [
+        "Killing a girl after birth",
+        "Terminating a pregnancy because the foetus is female",
+        "Educating girls",
+        "Preventing child marriage"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q69",
+      "unit": "Unit II – Gender Roles and Relations",
+      "question": "What is female infanticide?",
+      "options": [
+        "Sex determination before birth",
+        "Killing a female child after birth",
+        "Preventing pregnancy",
+        "Denying education to girls"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q70",
+      "unit": "Unit II – Gender Roles and Relations",
+      "question": "The PCPNDT Act was introduced in:",
+      "options": [
+        "1975",
+        "1982",
+        "1994",
+        "2009"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q71",
+      "unit": "Unit II – Gender Roles and Relations",
+      "question": "The PCPNDT Act aims to prevent:",
+      "options": [
+        "Women's education",
+        "Misuse of prenatal diagnostic techniques for sex determination",
+        "Medical treatment",
+        "Child vaccination"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q72",
+      "unit": "Unit II – Gender Roles and Relations",
+      "question": "What is a “marriage squeeze”?",
+      "options": [
+        "Equal numbers of men and women",
+        "A shortage of women leading to difficulty in finding marriage partners",
+        "Marriage between different communities",
+        "Early marriage"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q73",
+      "unit": "Unit II – Gender Roles and Relations",
+      "question": "Who discussed the concept of “missing women”?",
+      "options": [
+        "Amartya Sen",
+        "Karl Marx",
+        "Adam Smith",
+        "John Keynes"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q74",
+      "unit": "Unit II – Gender Roles and Relations",
+      "question": "The term “missing women” refers mainly to:",
+      "options": [
+        "Women who migrate",
+        "Women absent due to discrimination and excess female mortality",
+        "Women who are unemployed",
+        "Women who do not marry"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q75",
+      "unit": "Unit II – Gender Roles and Relations",
+      "question": "Which athlete was stripped of her Asian Games silver medal after a sex test?",
+      "options": [
+        "Dutee Chand",
+        "Santhi Soundarajan",
+        "Pinki Pramanik",
+        "Caster Semenya"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q76",
+      "unit": "Unit II – Gender Roles and Relations",
+      "question": "Who challenged the hyper-androgenism regulations at the Court of Arbitration for Sport?",
+      "options": [
+        "Santhi Soundarajan",
+        "Pinki Pramanik",
+        "Dutee Chand",
+        "Manabi Bandyopadhyay"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q77",
+      "unit": "Unit II – Gender Roles and Relations",
+      "question": "Which athlete's case involved inconclusive gender tests and later dropping of charges by the Calcutta High Court?",
+      "options": [
+        "Dutee Chand",
+        "Pinki Pramanik",
+        "Santhi Soundarajan",
+        "Caster Semenya"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q78",
+      "unit": "Unit II – Gender Roles and Relations",
+      "question": "Who became the first transgender college principal in India?",
+      "options": [
+        "Manabi Bandyopadhyay",
+        "Dutee Chand",
+        "Santhi Soundarajan",
+        "Nivedita Menon"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q79",
+      "unit": "Unit II – Gender Roles and Relations",
+      "question": "The Forum Against Sex Determination and Sex Pre-Selection (FASDSP) was established in:",
+      "options": [
+        "1975",
+        "1982",
+        "1985",
+        "1994"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q80",
+      "unit": "Unit II – Gender Roles and Relations",
+      "question": "In 2014, the Supreme Court of India recognized transgender people as:",
+      "options": [
+        "A separate caste",
+        "A third gender",
+        "A religious minority",
+        "A new biological sex"
+      ],
+      "answer": 1
+    }
+  ]
+}

@@ -1,0 +1,247 @@
+{
+  "title": "Unit III – Gender and Labour",
+  "source": "QB 1.pdf",
+  "totalQuestions": 20,
+  "questions": [
+    {
+      "id": "q81",
+      "unit": "Unit III – Gender and Labour",
+      "question": "What is meant by sexual division of labour?",
+      "options": [
+        "Division of work according to age",
+        "Division of work between men and women based on gender",
+        "Division of work according to income",
+        "Division of work according to education"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q82",
+      "unit": "Unit III – Gender and Labour",
+      "question": "Which of the following is traditionally considered “women’s work”?",
+      "options": [
+        "Mining",
+        "Construction",
+        "Nursing and teaching",
+        "Driving"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q83",
+      "unit": "Unit III – Gender and Labour",
+      "question": "Which Act attempted to address wage inequality in India?",
+      "options": [
+        "Equal Remuneration Act, 1976",
+        "Education Act, 1986",
+        "Factory Act, 1948",
+        "Labour Act, 1990"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q84",
+      "unit": "Unit III – Gender and Labour",
+      "question": "What is meant by “invisible unpaid labour”?",
+      "options": [
+        "Work done secretly",
+        "Unpaid work that is essential but often not recognized as work",
+        "Work done only by men",
+        "Work done outside the country"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q85",
+      "unit": "Unit III – Gender and Labour",
+      "question": "Which term describes the difficulty women face in reaching higher professional positions?",
+      "options": [
+        "Mommy track",
+        "Glass ceiling",
+        "Gender gap",
+        "Pay wall"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q86",
+      "unit": "Unit III – Gender and Labour",
+      "question": "What is the “mommy track”?",
+      "options": [
+        "A career path for mothers with faster promotions",
+        "Slower career advancement because of childcare responsibilities",
+        "A training programme for mothers",
+        "A government employment scheme"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q87",
+      "unit": "Unit III – Gender and Labour",
+      "question": "Which of the following is an example of housework?",
+      "options": [
+        "Collecting water",
+        "Cleaning",
+        "Cooking",
+        "All of the above"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q88",
+      "unit": "Unit III – Gender and Labour",
+      "question": "Why is housework called “invisible labour”?",
+      "options": [
+        "It is done at night",
+        "It is usually unpaid and often goes unnoticed",
+        "It requires no effort",
+        "It is performed outside the home"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q89",
+      "unit": "Unit III – Gender and Labour",
+      "question": "Who wrote the essay I Want a Wife?",
+      "options": [
+        "Judy Brady",
+        "Vimala",
+        "Indra Nooyi",
+        "Gauhar Sultana"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q90",
+      "unit": "Unit III – Gender and Labour",
+      "question": "What is the main message of I Want a Wife?",
+      "options": [
+        "Women should only work at home",
+        "Marriage should involve equality and shared responsibilities",
+        "Men should do all household work",
+        "Women should avoid careers"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q91",
+      "unit": "Unit III – Gender and Labour",
+      "question": "Who wrote Vantillu (The Kitchen)?",
+      "options": [
+        "Judy Brady",
+        "Vimala",
+        "Saritha",
+        "Anuradha Naik"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q92",
+      "unit": "Unit III – Gender and Labour",
+      "question": "In Vantillu, the kitchen mainly symbolizes:",
+      "options": [
+        "Wealth and luxury",
+        "Women’s unpaid labour and loss of freedom",
+        "Education",
+        "Political power"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q93",
+      "unit": "Unit III – Gender and Labour",
+      "question": "According to the material, approximately how many hours do Indian women spend on household work daily?",
+      "options": [
+        "1 hour",
+        "2 hours",
+        "5½ hours",
+        "10 hours"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q94",
+      "unit": "Unit III – Gender and Labour",
+      "question": "Approximately how much time do Indian men spend on household work daily?",
+      "options": [
+        "30–45 minutes",
+        "2–3 hours",
+        "5 hours",
+        "6 hours"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q95",
+      "unit": "Unit III – Gender and Labour",
+      "question": "The “Share the Load” campaign emphasizes:",
+      "options": [
+        "Women should do all household work",
+        "Household responsibilities should be shared",
+        "Men should work outside only",
+        "Children should do housework"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q96",
+      "unit": "Unit III – Gender and Labour",
+      "question": "Which Constitutional Amendments provided reservations for women in elected bodies?",
+      "options": [
+        "42nd and 44th",
+        "61st and 62nd",
+        "73rd and 74th",
+        "86th and 87th"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q97",
+      "unit": "Unit III – Gender and Labour",
+      "question": "Who was the woman who became the first woman driver in the Delhi Transport Corporation?",
+      "options": [
+        "Gauhar Sultana",
+        "Vankadarath Saritha",
+        "Ramya Krishna",
+        "Sayamma"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q98",
+      "unit": "Unit III – Gender and Labour",
+      "question": "What are the three major types of women’s work discussed in the chapter?",
+      "options": [
+        "Paid, voluntary and professional",
+        "Unpaid family work, home-based work and housework",
+        "Agricultural, industrial and political",
+        "Rural, urban and international"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q99",
+      "unit": "Unit III – Gender and Labour",
+      "question": "Why was Sayamma officially classified as a “non-worker”?",
+      "options": [
+        "She did not work",
+        "She was unemployed",
+        "She did not earn a regular income",
+        "She was a student"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q100",
+      "unit": "Unit III – Gender and Labour",
+      "question": "What is the central idea of the unit Gender and Labour?",
+      "options": [
+        "Men are naturally better workers",
+        "Women should focus only on household work",
+        "Women’s work has economic and social value and should be recognized",
+        "Domestic work has no economic value"
+      ],
+      "answer": 2
+    }
+  ]
+}
